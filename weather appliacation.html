@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input id="navi" type="text" placeholder="city name">
+    <input id="somu" type="button" value="submit">
+    <div  id="city"></div>
+    <div id="temp"></div>
+    <div id="info"></div>
+    <div id="wind"></div>
+    <script>
+        const a1 = document.getElementById("navi").value
+        const a2 = document.getElementById( "somu")
+        const a3 = document.getElementById( "city")
+        const a4 = document.getElementById( "temp")
+        const a5 = document.getElementById( "info")
+        const a6 = document.getElementById( "wind")
+
+        function convert( value){
+            return(value-273)
+        }
+        a2.addEventListener("click",()=>{
+
+            let apik="486b9adc87c2532bcd5d53ef620b9152"
+
+            fetch('https://api.openweathermap.org/data/2.5/weather?q='+a1+'&appid='+apik)
+  .then(response => response.json())
+  .then(data =>{
+    var city=data['name']
+    a3.innerHTML=`weather of ${city}`
+    var temperatre=data['main']['temp']
+    a4.innerHTML=`temparature:${temperatre}`
+    var information=dat['info']
+    a5.innerHTML=`inforamtion:${'info'}`
+    
+
+  })
+        })
+
+    </script>
+</body>
+</html>
